@@ -9,6 +9,17 @@ from .serializer import CharacterSerializer, LocationDetailSerializer, LocationL
 from django_filters import rest_framework as f
 
 
+class LocationRadiusFilter(filters.BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        longitude = request.query_params.get('longitude')
+        latitude = request.query_params.get('latitude')
+        radius = request.query_params.get('radius')
+
+        if longitude and latitude and radius:
+            point = Point(float(longitude), float(latitude))
+            radius = D(m=float(radius))
+            queryset = queryset.filter(coordinates__distance_lte=(point, radius))
+
 class CharacterFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
     occupation = django_filters.CharFilter(lookup_expr='icontains')
@@ -115,7 +126,7 @@ class LocationList(GenericAPIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = LocationListSerializer(data=request.data)
+        serializer = LocationListSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
