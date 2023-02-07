@@ -8,6 +8,8 @@ from .models import Character, Location
 from .serializer import CharacterSerializer, LocationDetailSerializer, LocationListSerializer
 from django_filters import rest_framework as f
 
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import D
 
 class LocationRadiusFilter(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
@@ -117,7 +119,7 @@ class LocationList(GenericAPIView):
     serializer_class = LocationListSerializer
     filter_backends = [f.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_class = LocationFilter
-    search_fields = ['name', 'latitude', 'longitude', 'created', 'character']
+    search_fields = ['name', 'created', 'character']
 
     def get(self, request):
         locations = self.filter_queryset(self.get_queryset())

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.gis.db.models import PointField
+from django.contrib.gis.db import models as gis_models
+from django.contrib.gis.geos import Point
 
 
 # Create your models here.
@@ -18,7 +19,7 @@ class Location(models.Model):
     name = models.CharField(max_length=250)
     longitude = models.FloatField()
     latitude = models.FloatField()
-    coordinates = PointField()
+    coordinates = gis_models.PointField(default=Point(0, 0), blank=True)
     created = models.DateTimeField(auto_now_add=True)
     character = models.ForeignKey(Character, on_delete=models.DO_NOTHING, related_name='character')
 
