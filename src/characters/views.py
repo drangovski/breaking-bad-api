@@ -9,18 +9,8 @@ from .serializer import CharacterSerializer, LocationDetailSerializer, LocationL
 from django_filters import rest_framework as f
 
 from django.contrib.gis.geos import Point
-from django.contrib.gis.measure import D
+from django.contrib.gis.measure import Distance
 
-class LocationRadiusFilter(filters.BaseFilterBackend):
-    def filter_queryset(self, request, queryset, view):
-        longitude = request.query_params.get('longitude')
-        latitude = request.query_params.get('latitude')
-        radius = request.query_params.get('radius')
-
-        if longitude and latitude and radius:
-            point = Point(float(longitude), float(latitude))
-            radius = D(m=float(radius))
-            queryset = queryset.filter(coordinates__distance_lte=(point, radius))
 
 class CharacterFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
@@ -34,14 +24,21 @@ class CharacterFilter(django_filters.FilterSet):
 
 class LocationFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
-    longitude = django_filters.CharFilter(lookup_expr='icontains')
-    latitude = django_filters.CharFilter(lookup_expr='icontains')
     created = django_filters.DateRangeFilter()
     character = django_filters.CharFilter(field_name="character__name", lookup_expr="icontains")
+    longitude = django_filters.NumberFilter(field_name="longitude", method="filter_by_distance", label="longitude")
+    latitude = django_filters.NumberFilter(field_name="latitude", method="filter_by_distance", label="latitude")
+    radius = django_filters.NumberFilter(field_name="radius", method="filter_by_distance", label="Radius")
 
     class Meta:
         model = Location
-        fields = ['name', 'longitude', 'latitude', 'created', 'character']
+        fields = ['name', 'longitude', 'latitude', 'radius', 'created', 'character']
+
+    def filter_by_distance(self, queryset, name, value):
+        point = Point(float(self.data['longitude']), float(self.data['latitude']))
+        return queryset.filter(
+            coordinates__distance_lte=(point, Distance(m=float(self.data['radius'])))
+        )
 
 
 class CharacterList(GenericAPIView):
