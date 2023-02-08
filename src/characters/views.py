@@ -26,19 +26,27 @@ class LocationFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(lookup_expr='icontains')
     created = django_filters.DateRangeFilter()
     character = django_filters.CharFilter(field_name="character__name", lookup_expr="icontains")
-    longitude = django_filters.NumberFilter(field_name="longitude", method="filter_by_distance", label="longitude")
-    latitude = django_filters.NumberFilter(field_name="latitude", method="filter_by_distance", label="latitude")
-    radius = django_filters.NumberFilter(field_name="radius", method="filter_by_distance", label="Radius")
+    longitude = django_filters.NumberFilter(field_name="longitude", method="filter_by_distance", label="Longitude")
+    latitude = django_filters.NumberFilter(field_name="latitude", method="filter_by_distance", label="Latitude")
+    radius = django_filters.NumberFilter(field_name="radius", method="filter_by_distance", label="Radius (m)")
+    ascending = django_filters.NumberFilter(field_name="ascending", method="filter_by_distance", label="Ascending")
 
     class Meta:
         model = Location
-        fields = ['name', 'longitude', 'latitude', 'radius', 'created', 'character']
+        fields = ['name', 'longitude', 'latitude', 'ascending', 'radius', 'created', 'character']
 
-    def filter_by_distance(self, queryset, name, value):
+    def filter_by_distance(self, queryset, *args, **kwargs):
+        order_direction = "coordinates"
+
+        if self.data['ascending'] == '1':
+            order_direction = "coordinates"
+        if self.data['ascending'] == '0':
+            order_direction = "-coordinates"
+
         point = Point(float(self.data['longitude']), float(self.data['latitude']))
         return queryset.filter(
             coordinates__distance_lte=(point, Distance(m=float(self.data['radius'])))
-        )
+        ).order_by(order_direction)
 
 
 class CharacterList(GenericAPIView):
@@ -114,9 +122,10 @@ class CharacterDetail(GenericAPIView):
 class LocationList(GenericAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationListSerializer
-    filter_backends = [f.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filter_backends = [f.DjangoFilterBackend, filters.OrderingFilter]
     filterset_class = LocationFilter
     search_fields = ['name', 'created', 'character']
+    ordering_fields = ['coordinates']
 
     def get(self, request):
         locations = self.filter_queryset(self.get_queryset())
