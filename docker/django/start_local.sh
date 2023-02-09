@@ -9,5 +9,6 @@ fi
 
 sleep 10
 
+django-admin makemigrations
 django-admin migrate --noinput
 django-admin runserver 0.0.0.0:8000
