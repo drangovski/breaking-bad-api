@@ -1,52 +1,24 @@
-import django_filters
-
 from rest_framework import status, filters
+from rest_framework.decorators import api_view
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
 from .models import Character, Location
 from .serializer import CharacterSerializer, LocationDetailSerializer, LocationListSerializer
 from django_filters import rest_framework as f
-
-from django.contrib.gis.geos import Point
-from django.contrib.gis.measure import Distance
+from .filters import CharacterFilter, LocationFilter
 
 
-class CharacterFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='icontains')
-    occupation = django_filters.CharFilter(lookup_expr='icontains')
-    suspect = django_filters.BooleanFilter()
+@api_view(['GET'])
+def api_overview(request):
+    api_urls = {
+        'Characters List': '/characters/',
+        'Character Details': '/character/<pk>/',
+        'Locations List': '/locations/',
+        'Location Details': '/locations/<pk>',
+    }
 
-    class Meta:
-        model = Character
-        fields = ['name', 'occupation', 'suspect']
-
-
-class LocationFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='icontains')
-    created = django_filters.DateRangeFilter()
-    character = django_filters.CharFilter(field_name="character__name", lookup_expr="icontains")
-    longitude = django_filters.NumberFilter(field_name="longitude", method="filter_by_distance", label="Longitude")
-    latitude = django_filters.NumberFilter(field_name="latitude", method="filter_by_distance", label="Latitude")
-    radius = django_filters.NumberFilter(field_name="radius", method="filter_by_distance", label="Radius (m)")
-    ascending = django_filters.NumberFilter(field_name="ascending", method="filter_by_distance", label="Ascending")
-
-    class Meta:
-        model = Location
-        fields = ['name', 'longitude', 'latitude', 'ascending', 'radius', 'created', 'character']
-
-    def filter_by_distance(self, queryset, *args, **kwargs):
-        order_direction = "coordinates"
-
-        if self.data['ascending'] == '1':
-            order_direction = "coordinates"
-        if self.data['ascending'] == '0':
-            order_direction = "-coordinates"
-
-        point = Point(float(self.data['longitude']), float(self.data['latitude']))
-        return queryset.filter(
-            coordinates__distance_lte=(point, Distance(m=float(self.data['radius'])))
-        ).order_by(order_direction)
+    return Response(api_urls)
 
 
 class CharacterList(GenericAPIView):
