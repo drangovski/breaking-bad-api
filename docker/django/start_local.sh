@@ -6,5 +6,9 @@ if ! /bin/ls src/breakingbadapi_task.egg-info; then
 else
     echo "breakingbadapi_task is already installed in src/breakingbadapi_task.egg-info"
 fi
+
+sleep 10
+
+django-admin makemigrations
 django-admin migrate --noinput
 django-admin runserver 0.0.0.0:8000

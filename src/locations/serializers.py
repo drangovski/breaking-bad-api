@@ -1,11 +1,6 @@
 from rest_framework import serializers
-from .models import Character, Location
-
-
-class CharacterSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Character
-        fields = ['id', 'name', 'occupation', 'date_of_birth', 'suspect']
+from .models import Location
+from characters.serializers import CharacterSerializer
 
 
 class LocationListSerializer(serializers.ModelSerializer):
@@ -28,6 +23,7 @@ class LocationListSerializer(serializers.ModelSerializer):
 
 class LocationDetailSerializer(serializers.ModelSerializer):
     character = CharacterSerializer(read_only=True)
+
     class Meta:
         model = Location
         fields = ['id', 'name', 'longitude', 'latitude', 'created', 'character']
