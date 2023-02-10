@@ -11,6 +11,10 @@ from .filters import CharacterFilter
 
 @api_view(['GET'])
 def api_overview(request):
+    """
+    This endpoint shows the overview of the API endpoints.
+    Documentation: https://drangovski.github.io
+    """
     api_urls = {
         'Characters List': '/characters/',
         'Character Details': '/character/<pk>/',
@@ -22,6 +26,11 @@ def api_overview(request):
 
 
 class CharacterList(GenericAPIView):
+    """
+    This endpoint shows all of the existing characters stored in the database.
+    Methods available for this endpoint are GET and POST.
+    Documentation: https://drangovski.github.io
+    """
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
     filter_backends = [f.DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
@@ -52,6 +61,11 @@ class CharacterList(GenericAPIView):
 
 
 class CharacterDetail(GenericAPIView):
+    """
+    This endpoint shows the character details.
+    Methods available for this endpoint are GET, PUT and DELETE.
+    Documentation: https://drangovski.github.io
+    """
     queryset = Character.objects.all()
     serializer_class = CharacterSerializer
     filter_backends = [f.DjangoFilterBackend]

@@ -9,6 +9,11 @@ from .filters import LocationFilter
 
 
 class LocationList(GenericAPIView):
+    """
+    This endpoint shows all of the existing locations stored in the database.
+    Methods available for this endpoint are GE and POST.
+    Documentation: https://drangovski.github.io
+    """
     queryset = Location.objects.all()
     serializer_class = LocationListSerializer
     filter_backends = [f.DjangoFilterBackend, filters.OrderingFilter]
@@ -31,6 +36,11 @@ class LocationList(GenericAPIView):
 
 
 class LocationDetail(GenericAPIView):
+    """
+    This endpoint shows the location details.
+    Methods available for this endpoint are GET, PUT and DELETE.
+    Documentation: https://drangovski.github.io
+    """
     queryset = Location.objects.all()
     serializer_class = LocationDetailSerializer
 

@@ -1,0 +1,841 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
+
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#breaking-bad-api" class="toc-h1 toc-link" data-title="Breaking Bad API">Breaking Bad API</a>
+          </li>
+          <li>
+            <a href="#setting-up-the-project" class="toc-h1 toc-link" data-title="Setting up the project">Setting up the project</a>
+          </li>
+          <li>
+            <a href="#mock-locations" class="toc-h1 toc-link" data-title="Mock Locations">Mock Locations</a>
+          </li>
+          <li>
+            <a href="#characters" class="toc-h1 toc-link" data-title="Characters">Characters</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#retrieve-all-characters" class="toc-h2 toc-link" data-title="Retrieve all characters">Retrieve all characters</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-single-character" class="toc-h2 toc-link" data-title="Retrieve a single character">Retrieve a single character</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-character" class="toc-h2 toc-link" data-title="Create a new character">Create a new character</a>
+                  </li>
+                  <li>
+                    <a href="#character-ordering" class="toc-h2 toc-link" data-title="Character ordering">Character ordering</a>
+                  </li>
+                  <li>
+                    <a href="#character-filtering" class="toc-h2 toc-link" data-title="Character filtering">Character filtering</a>
+                  </li>
+                  <li>
+                    <a href="#character-search" class="toc-h2 toc-link" data-title="Character search">Character search</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-character" class="toc-h2 toc-link" data-title="Update a character">Update a character</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-character" class="toc-h2 toc-link" data-title="Delete a character">Delete a character</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#locations" class="toc-h1 toc-link" data-title="Locations">Locations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#retrieve-all-locations" class="toc-h2 toc-link" data-title="Retrieve all locations">Retrieve all locations</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-a-single-location" class="toc-h2 toc-link" data-title="Retrieve a single location">Retrieve a single location</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-new-location" class="toc-h2 toc-link" data-title="Create a new location">Create a new location</a>
+                  </li>
+                  <li>
+                    <a href="#location-ordering" class="toc-h2 toc-link" data-title="Location ordering">Location ordering</a>
+                  </li>
+                  <li>
+                    <a href="#locaton-filtering" class="toc-h2 toc-link" data-title="Locaton filtering">Locaton filtering</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-location" class="toc-h2 toc-link" data-title="Update a location">Update a location</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-location" class="toc-h2 toc-link" data-title="Delete a location">Delete a location</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='breaking-bad-api'>Breaking Bad API</h1>
+<p>The idea was to create a simple platform for DEA agents, to manage information about characters from the Breaking Bad/Better Call Saul universe. To make the DEA agents&#39; life easier, they need to have an API endpoint that allows filtering information about characters by their name, date of birth, occupation or the fact whether they are a suspect.</p>
+
+<p>As the DEA is trying to put drug lords behind bars, they are tracking their, and the people around them location. They store timestamps and particular locations as geographical coordinates in a related table. The endpoint that will expose the data needs to allow filtering of location entries, that were within a specific distance from a particular geographical point, as well as who they were assigned to, and the datetime range of when they were recorded. The ordering for this endpoint should allow taking into consideration distance from a specified geopraphical point, both ascending and descending.</p>
+<h1 id='setting-up-the-project'>Setting up the project</h1>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">'http://localhost:8000/api/characters/'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Content-Type'</span> <span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Request failed with status code:"</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+<p>As prerequisites you will need to have <strong>Docker</strong> and <strong>docker-compose</strong> installed on your system.</p>
+
+<p>At first, go to your project&#39;s folder and clone the Breaking Bad API repository:</p>
+
+<p><code>git clone git@github.com:drangovski/breaking-bad-api.git</code></p>
+
+<p><code>cd breaking-bad-api</code></p>
+
+<p>Then you will need to create and <code>.env</code> file where you will put the values for the following variables:</p>
+
+<p><code>POSTGRES_USER=heisenberg<br />
+POSTGRES_PASSWORD=iamthedanger<br />
+POSTGRES_DB=breakingbad<br />
+DEBUG=True<br />
+SECRET_KEY=&quot;<SECRET KEY>&quot;<br />
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]<br />
+SQL_ENGINE=django.db.backends.postgresql<br />
+SQL_DATABASE=breakingbad<br />
+SQL_USER=heisenberg<br />
+SQL_PASSWORD=iamthedanger<br />
+SQL_HOST=db<br />
+SQL_PORT=5432
+</code></p>
+
+<aside class="notice">
+Note: If you want, you can use the <b>env_generator.sh</b> file to create <b>.env</b> file for you. This will automatically generate the <b>SECRET_KEY</b> as well. To run this file, first give it a permission with <b>chmod +x env_generator.sh</b> and then run it with <b>./env_generator.sh</b><br />
+</aside>
+
+<p>Once you have this set, you can run:</p>
+
+<p><code>docker-compose build</code></p>
+
+<p><code>docker-compose up</code></p>
+
+<p>This will start the django application at <code>localhost:8000</code>. To access the api, the url will be <code>localhost:8000/api</code>.</p>
+<h1 id='mock-locations'>Mock Locations</h1>
+<p>For the sake of the theme of these projects (and eventually, to make your life a bit easier :)), you can eventually use the following locations and their coordinates:</p>
+
+<table><thead>
+<tr>
+<th>Location</th>
+<th>Longitude</th>
+<th>Latitude</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Los Pollos Hermanos</td>
+<td>35.06534619552971</td>
+<td>-106.64463423464572</td>
+</tr>
+<tr>
+<td>Walter White House</td>
+<td>35.12625330483283</td>
+<td>-106.53566597939896</td>
+</tr>
+<tr>
+<td>Saul Goodman Office</td>
+<td>35.12958969793146</td>
+<td>-106.53106126774908</td>
+</tr>
+<tr>
+<td>Mike Ehrmantraut House</td>
+<td>35.08486667169461</td>
+<td>-106.64115047513016</td>
+</tr>
+<tr>
+<td>Jessie Pinkman House</td>
+<td>35.078341181544396</td>
+<td>-106.62404891988452</td>
+</tr>
+<tr>
+<td>Hank &amp; Marrie House</td>
+<td>35.13512843853582</td>
+<td>-106.48159991250327</td>
+</tr>
+</tbody></table>
+<h1 id='characters'>Characters</h1><h2 id='retrieve-all-characters'>Retrieve all characters</h2>
+<p>To retrieves all existing characters in the database.</p>
+
+<p><code>GET /api/characters/</code></p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Walter White"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"occupation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chemistry Professor"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1971"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"suspect"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuco Salamanca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"occupation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grandpa Keeper"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1976"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"suspect"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='retrieve-a-single-character'>Retrieve a single character</h2>
+<p>To retrieve a single character, pass the character&#39;s <code>ID</code> to the enpoint.</p>
+
+<p><code>GET /api/characters/{id}</code></p>
+<h2 id='create-a-new-character'>Create a new character</h2>
+<p>You can use the POST method to to <strong>/characters/</strong> endpoint in order to create a new character.</p>
+
+<p><code>POST /api/characters/</code></p>
+<h3 id='creation-parameters'>Creation parameters</h3>
+<p>You will need to pass the following parameters in the query, in order to successfully create a character:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"occupation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"suspect"</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String value for the name of the character.</td>
+</tr>
+<tr>
+<td>occupation</td>
+<td>String value for the occupation of the character.</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>String value for the date of brith.</td>
+</tr>
+<tr>
+<td>suspect</td>
+<td>Boolean parameter. True if suspect, False if not.</td>
+</tr>
+</tbody></table>
+<h2 id='character-ordering'>Character ordering</h2>
+<p>Ordering of the characters can be done by two fields as a parameters: <strong>name</strong> and <strong>date_of_birth</strong></p>
+
+<p><code>GET /api/characters/?ordering={name / date_of_birth}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Order the results by the name field.</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>Order the results by the date_of_birth field.</td>
+</tr>
+</tbody></table>
+
+<p>Additionally, you can add the parameter <strong>ascending</strong> with value <strong>1</strong> or <strong>0</strong> to order the results in ascending or descending order.</p>
+
+<p><code>GET /api/characters/?ordering={name / date_of_birth}&amp;ascending={1 / 0}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&amp;ascending=1</td>
+<td>Order the results in ascending order by passing <strong>1</strong> as a value.</td>
+</tr>
+<tr>
+<td>&amp;ascending=0</td>
+<td>Order the results in descending order by passing <strong>0</strong> as a value.</td>
+</tr>
+</tbody></table>
+<h2 id='character-filtering'>Character filtering</h2>
+<p>To filter the characters, you can use the parameters in the table below. Case insensitive.</p>
+
+<p><code>GET /api/characters/?name={text}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/?name={text}</td>
+<td>Filter the results by name. It can be any length and case insensitive.</td>
+</tr>
+<tr>
+<td>/?occupaton={text}</td>
+<td>Filter the results by occupation. It can be any length and case insensitive.</td>
+</tr>
+<tr>
+<td>/?suspect={True / False}</td>
+<td>Filter the results by suspect status. It can be True or False.</td>
+</tr>
+</tbody></table>
+<h2 id='character-search'>Character search</h2>
+<p>You can also use search parameter in the query in order to search characters and retrieve results based on the fields listed below.</p>
+
+<p><code>GET /api/characters/?search={text}</code></p>
+
+<ul>
+<li>name</li>
+<li>occupation</li>
+<li>date_of_birth</li>
+</ul>
+<h2 id='update-a-character'>Update a character</h2>
+<p>To update a character, you will need to pass the {id} of a character to the url and make a PUT method request with the parameters in the table below.</p>
+
+<p><code>PUT /api/characters/{id}</code></p>
+
+<blockquote>
+<p>Example body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mike Ehrmantraut"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"occupation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retired Officer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1945"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"suspect"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String value for the name of the character.</td>
+</tr>
+<tr>
+<td>occupation</td>
+<td>String value for the occupation of the character.</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>String value for the date of brith.</td>
+</tr>
+<tr>
+<td>suspect</td>
+<td>Boolean parameter. True if suspect, False if not.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-character'>Delete a character</h2>
+<p>To delete a character, you will need to pass the {id} of a character to the url and make DELETE method request.</p>
+
+<p><code>DELETE /api/characters/{id}</code></p>
+<h1 id='locations'>Locations</h1><h2 id='retrieve-all-locations'>Retrieve all locations</h2>
+<p>To retrieves all existing locations in the database.</p>
+
+<p><code>GET /api/locations/</code></p>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Pollos Hermanos"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">35.065442792232716</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-106.6444840309555</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-02-09T22:04:32.441106Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"character"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuco Salamanca"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8000/api/characters/2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='retrieve-a-single-location'>Retrieve a single location</h2>
+<p>To retrieve a single location, pass the locations&#39;s <code>ID</code> to the enpoint.</p>
+
+<p><code>GET /api/locations/{id}</code></p>
+<h2 id='create-a-new-location'>Create a new location</h2>
+<p>You can use the POST method to to <strong>/locations/</strong> endpoint in order to create a new location.</p>
+
+<p><code>POST /api/locations/</code></p>
+<h3 id='creation-parameters-2'>Creation parameters</h3>
+<p>You will need to pass the following parameters in the query, in order to successfully create a location:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"character"</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name of the location.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Longitude of the location.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Latitude of the location.</td>
+</tr>
+<tr>
+<td>character</td>
+<td>This is the id of a character. It is basically ForeignKey relation to the Character model.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Note: Upon creation of an entry, the Longitude and the Latitude will be converted to a PointField() type of field in the model and stored as a calculated geographical value under the field `coordinates`, in order for the location coordinates to be eligible for GeoDjango operations. 
+</aside>
+<h2 id='location-ordering'>Location ordering</h2>
+<p>Ordering of the locations can be done by providing the parameters for the longitude and latitude coordinates for a single point, and a radius (in meters). This will return all of the locatons stored in the database, that are in the provided radius from the provided point (coordinates).</p>
+
+<p><code>GET /api/locations/?longitude={longitude}&amp;latitude={latitude}&amp;radius={radius}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>longitude</td>
+<td>The longitude parameter of the radius point.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>The latitude parameter of the radius point.</td>
+</tr>
+<tr>
+<td>radius</td>
+<td>The radius parameter (in meters).</td>
+</tr>
+</tbody></table>
+
+<p>Additionally, you can add the parameter <strong>ascending</strong> with value <strong>1</strong> or <strong>0</strong> to order the results in ascending or descending order.</p>
+
+<p><code>GET /api/locations/?longitude={longitude}&amp;latitude={latitude}&amp;radius={radius}&amp;ascending={1 / 0}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&amp;ascending=1</td>
+<td>Order the results in ascending order by passing <strong>1</strong> as a value.</td>
+</tr>
+<tr>
+<td>&amp;ascending=0</td>
+<td>Order the results in descending order by passing <strong>0</strong> as a value.</td>
+</tr>
+</tbody></table>
+<h2 id='locaton-filtering'>Locaton filtering</h2>
+<p>To filter the locations, you can use the parameters in the table below. Case insensitive.</p>
+
+<p><code>GET /api/locations/?character={text}</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>/?name={text}</td>
+<td>Filter the results by location name. It can be any length and case insensitive.</td>
+</tr>
+<tr>
+<td>/?character={text}</td>
+<td>Filter the results by character. It can be any length and case insensitive.</td>
+</tr>
+<tr>
+<td>/?created={timeframe}</td>
+<td>Filter the results by when they were created. Options: today, yesterday, week, month &amp; year.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Note: You can combine filtering parameters with ordering parameters. Just keep in mind that if you filter by any of these fields above and want to use the ordering parameters, you will always need to pass longitude, latitude and radius alotgether. Additionally, if you need to use ascending parameter for ordering, this parameter can't be passed without longitude, latitude and radius as well.
+</aside>
+<h2 id='update-a-location'>Update a location</h2>
+<p>To update a location, you will need to pass the {id} of a locations to the url and make a PUT method request with the parameters in the table below.</p>
+
+<p><code>PUT /api/locations/{id}</code></p>
+
+<blockquote>
+<p>Example body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Pollos Hermanos"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">35.065442792232716</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-106.6444840309555</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-02-09T22:04:32.441106Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"character"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tuco Salamanca"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"occupation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grandpa Keeper"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1975"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"suspect"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String value for the name of the location.</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Float value for the longitude of the location.</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>Float value for the latitude of the location.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-location'>Delete a location</h2>
+<p>To delete a location, you will need to pass the {id} of a location to the url and make DELETE method request.</p>
+
+<p><code>DELETE /api/locations/{id}</code></p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
