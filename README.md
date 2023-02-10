@@ -1,3 +1,5 @@
+# To get started, please visit the documentation at https://drangovski.github.io
+
 # The Breaking Bad API task
 
 The idea is to create a simple platform for DEA agents, to manage information about characters from the Breaking Bad/Better Call Saul universe. To make the DEA agents' life easier, they need to have an API endpoint that allows filtering information about characters by their name, date of birth, occupation or the fact whether they are a suspect.
